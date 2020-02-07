@@ -80,12 +80,15 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
     }
 
-    private void ValidateUser(final String name, final String email, final String password) {
-        final DatabaseReference RootRef = FirebaseDatabase.getInstance().getReference();
+    private void ValidateUser(final String name, final String email, final String password)
+    {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
                 if (!(dataSnapshot.child("Users").child(email).exists()))
                 {
                     HashMap<String, Object> userdataMap = new HashMap<>();
@@ -118,7 +121,6 @@ public class RegisterUserActivity extends AppCompatActivity {
                 {
                     Toast.makeText(RegisterUserActivity.this, "This " + email + " already exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(RegisterUserActivity.this, "Please try again using another e-mail id.", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(RegisterUserActivity.this, MainActivity.class);
                     startActivity(intent);
