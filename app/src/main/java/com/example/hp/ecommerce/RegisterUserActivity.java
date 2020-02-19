@@ -26,7 +26,7 @@ import java.util.HashMap;
 public class RegisterUserActivity extends AppCompatActivity {
 
     private Button CreateAccountButton;
-    private EditText InputName, InputEmail, InputPassword;
+    private EditText InputName, InputPhoneNumber, InputPassword;
     private ProgressDialog loadingBar;
 
 
@@ -36,7 +36,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user);
 
         InputName = findViewById(R.id.register_username_input);
-        InputEmail = findViewById(R.id.register_email_input);
+        InputPhoneNumber = findViewById(R.id.register_phonenumber_input);
         InputPassword=findViewById(R.id.register_password_input);
         CreateAccountButton=findViewById(R.id.register_btn);
         loadingBar = new ProgressDialog(this);
@@ -54,14 +54,14 @@ public class RegisterUserActivity extends AppCompatActivity {
     private void CreateAccount() {
 
         String name = InputName.getText().toString();
-        String email = InputEmail.getText().toString();
+        String number = InputPhoneNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
         if (TextUtils.isEmpty(name))
         {
             Toast.makeText(this, "Please write your name...", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(email))
+        else if (TextUtils.isEmpty(number))
         {
             Toast.makeText(this, "Please write your email id...", Toast.LENGTH_SHORT).show();
         }
@@ -76,11 +76,11 @@ public class RegisterUserActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            ValidateUser(name, email, password);
+            ValidateUser(name, number, password);
         }
     }
 
-    private void ValidateUser(final String name, final String email, final String password)
+    private void ValidateUser(final String name, final String number, final String password)
     {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -89,14 +89,14 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                if (!(dataSnapshot.child("Users").child(email).exists()))
+                if (!(dataSnapshot.child("Users").child(number).exists()))
                 {
                     HashMap<String, Object> userdataMap = new HashMap<>();
-                    userdataMap.put("email", email);
+                    userdataMap.put("number", number);
                     userdataMap.put("password", password);
                     userdataMap.put("name", name);
 
-                    RootRef.child("Users").child(email).updateChildren(userdataMap)
+                    RootRef.child("Users").child(number).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task)
@@ -119,7 +119,7 @@ public class RegisterUserActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(RegisterUserActivity.this, "This " + email + " already exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterUserActivity.this, "This " + number + " already exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
 
                     Intent intent = new Intent(RegisterUserActivity.this, MainActivity.class);
