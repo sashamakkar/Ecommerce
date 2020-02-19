@@ -58,6 +58,25 @@
         android:layout_marginTop="5dp"
         >
 
+        <CheckBox
+            android:id="@+id/remember_me_chkb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember Me" />
+
+<!--        <com.rey.material.widget.CheckBox-->
+<!--            android:id="@+id/remember_me_chkb"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Material.Drawable.CheckBox"-->
+<!--            android:text="Remember me"-->
+<!--            android:textColor="@color/colorPrimaryDark"-->
+<!--            app:cbd_strokeColor="@color/colorPrimaryDark"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:textSize="18sp"-->
+<!--            android:layout_marginLeft="17dp"-->
+<!--            />-->
+
         <TextView
             android:id="@+id/forget_password_link"
             android:layout_width="wrap_content"
@@ -117,5 +136,7 @@
         android:layout_marginStart="25dp"
         android:visibility="invisible"
         />
+
+
 
 </RelativeLayout>
