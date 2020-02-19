@@ -36,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SettingsActivity extends AppCompatActivity {
 
     private CircleImageView profileImageView;
-    private EditText fullNameEditText, userEmailEditText, addressEditText;
+    private EditText fullNameEditText, userNumberEditText, addressEditText;
     private TextView profileChangeTextBtn,  closeTextBtn, saveTextButton;
     private Button securityQuestionBtn;
 
@@ -56,7 +56,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         profileImageView = (CircleImageView) findViewById(R.id.settings_profile_image);
         fullNameEditText = (EditText) findViewById(R.id.settings_full_name);
-        userEmailEditText = (EditText) findViewById(R.id.settings_email);
+        userNumberEditText = (EditText) findViewById(R.id.settings_phone_number);
         addressEditText = (EditText) findViewById(R.id.settings_address);
         profileChangeTextBtn = (TextView) findViewById(R.id.profile_image_change_btn);
         closeTextBtn = (TextView) findViewById(R.id.close_settings_btn);
@@ -64,7 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
         securityQuestionBtn = findViewById(R.id.security_questions_btn);
 
 
-        userInfoDisplay(profileImageView, fullNameEditText, userEmailEditText, addressEditText);
+        userInfoDisplay(profileImageView, fullNameEditText, userNumberEditText, addressEditText);
 
 
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
@@ -122,8 +122,8 @@ public class SettingsActivity extends AppCompatActivity {
         HashMap<String, Object> userMap = new HashMap<>();
         userMap. put("name", fullNameEditText.getText().toString());
         userMap. put("address", addressEditText.getText().toString());
-        userMap. put("emailOrder", userEmailEditText.getText().toString());
-        ref.child(Prevalent.currentOnlineUser.getEmail()).updateChildren(userMap);
+        userMap. put("phone number", userNumberEditText.getText().toString());
+        ref.child(Prevalent.currentOnlineUser.getNumber()).updateChildren(userMap);
 
         startActivity(new Intent(SettingsActivity.this, HomeActivity.class));
         Toast.makeText(SettingsActivity.this, "Profile Info update successfully.", Toast.LENGTH_SHORT).show();
@@ -165,9 +165,9 @@ public class SettingsActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Address is mandatory.", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(userEmailEditText.getText().toString()))
+        else if (TextUtils.isEmpty(userNumberEditText.getText().toString()))
         {
-            Toast.makeText(this, "Email id is mandatory.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Phone Number id is mandatory.", Toast.LENGTH_SHORT).show();
         }
         else if(checker.equals("clicked"))
         {
@@ -188,7 +188,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (imageUri != null)
         {
             final StorageReference fileRef = storageProfilePrictureRef
-                    .child(Prevalent.currentOnlineUser.getEmail() + ".jpg");
+                    .child(Prevalent.currentOnlineUser.getNumber() + ".jpg");
 
             uploadTask = fileRef.putFile(imageUri);
 
@@ -218,9 +218,9 @@ public class SettingsActivity extends AppCompatActivity {
                                 HashMap<String, Object> userMap = new HashMap<>();
                                 userMap. put("name", fullNameEditText.getText().toString());
                                 userMap. put("address", addressEditText.getText().toString());
-                                userMap. put("emailOrder", userEmailEditText.getText().toString());
+                                userMap. put("PhoneNumber", userNumberEditText.getText().toString());
                                 userMap. put("image", myUrl);
-                                ref.child(Prevalent.currentOnlineUser.getEmail()).updateChildren(userMap);
+                                ref.child(Prevalent.currentOnlineUser.getNumber()).updateChildren(userMap);
 
                                 progressDialog.dismiss();
 
@@ -245,7 +245,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userEmailEditText, final EditText addressEditText)
     {
-        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getEmail());
+        DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getNumber());
 
         UsersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -257,12 +257,12 @@ public class SettingsActivity extends AppCompatActivity {
                     {
                         String image = dataSnapshot.child("image").getValue().toString();
                         String name = dataSnapshot.child("name").getValue().toString();
-                        String email = dataSnapshot.child("emailOrder").getValue().toString();
+                        String number = dataSnapshot.child("number").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
 
                         Picasso.get().load(image).into(profileImageView);
                         fullNameEditText.setText(name);
-                        userEmailEditText.setText(email);
+                        userNumberEditText.setText(number);
                         addressEditText.setText(address);
                     }
                 }
