@@ -27,7 +27,7 @@ import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText InputEmail, InputPassword;
+    private EditText InputNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
     private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
-        InputEmail = (EditText) findViewById(R.id.login_email_input);
+        InputNumber = (EditText) findViewById(R.id.login_number_input);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         ForgetPasswordLink = findViewById(R.id.forget_password_link);
@@ -93,12 +93,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginUser()
     {
-        String email = InputEmail.getText().toString();
+        String number = InputNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
-        if (TextUtils.isEmpty(email))
+        if (TextUtils.isEmpty(number))
         {
-            Toast.makeText(this, "Please write your email id...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please write your number...", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(password))
         {
@@ -112,17 +112,17 @@ public class LoginActivity extends AppCompatActivity {
             loadingBar.show();
 
 
-            AllowAccessToAccount(email, password);
+            AllowAccessToAccount(number, password);
         }
     }
 
 
 
-    private void AllowAccessToAccount(final String email, final String password)
+    private void AllowAccessToAccount(final String number, final String password)
     {
         if(chkBoxRememberMe.isChecked())
         {
-            Paper.book().write(Prevalent.UserEmailKey, email);
+            Paper.book().write(Prevalent.UserPhoneKey, number);
             Paper.book().write(Prevalent.UserPasswordKey, password);
         }
 
@@ -135,11 +135,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                if (dataSnapshot.child(parentDbName).child(email).exists())
+                if (dataSnapshot.child(parentDbName).child(number).exists())
                 {
-                    Users usersData = dataSnapshot.child(parentDbName).child(email).getValue(Users.class);
+                    Users usersData = dataSnapshot.child(parentDbName).child(number).getValue(Users.class);
 
-                    if (usersData.getEmail().equals(email))
+                    if (usersData.getNumber().equals(number))
                     {
                         if (usersData.getPassword().equals(password))
                         {
@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this, "Account with this " + email + " email id does not exist.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Account with this " + number + " does not exist.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
             }
