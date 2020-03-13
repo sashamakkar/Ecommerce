@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.hp.ecommerce.HomeActivity;
 import com.example.hp.ecommerce.MainActivity;
 import com.example.hp.ecommerce.R;
 

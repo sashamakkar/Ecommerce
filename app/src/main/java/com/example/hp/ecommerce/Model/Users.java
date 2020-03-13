@@ -2,16 +2,27 @@ package com.example.hp.ecommerce.Model;
 
 public class Users {
 
-    private String name, email, password, image, address;
+    private String name, number, password, image, address;
 
-    public Users()
-    {
+    public Users(){
+        this.name=" ";
+        this.number=" ";
+        this.password=" ";
+        this.image=" ";
+        this.address=" ";
+    }
 
+    public Users(String name, String number, String password) {
+        this.name = name;
+        this.number = number;
+        this.password = password;
+        this.image="abc";
+        this.address="def";
     }
 
     public Users(String name, String phone, String password, String image, String address) {
         this.name = name;
-        this.email = phone;
+        this.number = phone;
         this.password = password;
         this.image = image;
         this.address = address;
@@ -25,12 +36,12 @@ public class Users {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNumber() {
+        return number;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNumber(String email) {
+        this.number = number;
     }
 
     public String getPassword() {

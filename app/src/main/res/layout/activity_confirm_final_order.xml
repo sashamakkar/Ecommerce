@@ -52,6 +52,16 @@
         android:layout_marginRight="20dp"
         android:hint="Your Home Address"
         />
+    <EditText
+        android:id="@+id/shipment_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipment_address"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="Your phone number"/>
+
 
     <EditText
         android:id="@+id/shipment_city"

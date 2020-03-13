@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
-    private EditText nameEditText, emailEditText, addressEditText, cityEditText;
+    private EditText nameEditText, numberEditText, addressEditText, cityEditText;
     private Button confirmOrderBtn;
 
     private String totalAmount = "";
@@ -39,7 +39,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
         confirmOrderBtn = (Button) findViewById(R.id.confirm_final_order_btn);
         nameEditText = (EditText) findViewById(R.id.shipment_name);
-        emailEditText = (EditText) findViewById(R.id.shipment_phone_number);
+        numberEditText = (EditText) findViewById(R.id.shipment_phone_number);
         addressEditText = (EditText) findViewById(R.id.shipment_address);
         cityEditText = (EditText) findViewById(R.id.shipment_city);
 
@@ -59,9 +59,9 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         {
             Toast.makeText(this, "Please provide your full name.", Toast.LENGTH_SHORT).show();
         }
-        else if (TextUtils.isEmpty(emailEditText.getText().toString()))
+        else if (TextUtils.isEmpty(numberEditText.getText().toString()))
         {
-            Toast.makeText(this, "Please provide your email id.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please provide your contact number.", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(addressEditText.getText().toString()))
         {
@@ -92,12 +92,12 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
-                .child(Prevalent.currentOnlineUser.getEmail());
+                .child(Prevalent.currentOnlineUser.getNumber());
 
         HashMap<String, Object> ordersMap = new HashMap<>();
         ordersMap.put("totalAmount", totalAmount);
         ordersMap.put("name", nameEditText.getText().toString());
-        ordersMap.put("email", emailEditText.getText().toString());
+        ordersMap.put("email", numberEditText.getText().toString());
         ordersMap.put("address", addressEditText.getText().toString());
         ordersMap.put("city", cityEditText.getText().toString());
         ordersMap.put("date", saveCurrentDate);
@@ -113,7 +113,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference()
                             .child("Cart List")
                             .child("User View")
-                            .child(Prevalent.currentOnlineUser.getEmail())
+                            .child(Prevalent.currentOnlineUser.getNumber())
                             .removeValue()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
