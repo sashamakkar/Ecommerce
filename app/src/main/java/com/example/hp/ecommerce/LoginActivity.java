@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -138,14 +139,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
+
                 if (dataSnapshot.child(parentDbName).child(number).exists())
                 {
                     Users usersData = dataSnapshot.child(parentDbName).child(number).getValue(Users.class);
+                    Log.e("TAG", "stop 1:" + usersData.getNumber());
+                    Log.e("TAG", "stop 1:" + usersData.getPassword());
 
-                    if (usersData.getNumber().equals(number))
-                    {
+                    //if (usersData.getNumber().equals(number))
+                    //{
+                        Log.e("TAG", "stop 2");
                         if (usersData.getPassword().equals(password))
                         {
+                            Log.e("TAG", "stop 3");
                             if (parentDbName.equals("Admins"))
                             {
                                 Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
@@ -156,14 +162,16 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else if (parentDbName.equals("Users"))
                             {
+                                Log.e("TAG", "stop 4");
                                 Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                Log.e("TAG", "stop 5");
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 Prevalent.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }
-                        }
+                      //  }
                         else
                         {
                             loadingBar.dismiss();

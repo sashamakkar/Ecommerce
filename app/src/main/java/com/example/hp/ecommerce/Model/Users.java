@@ -20,9 +20,9 @@ public class Users {
         this.address="def";
     }
 
-    public Users(String name, String phone, String password, String image, String address) {
+    public Users(String name, String number, String password, String image, String address) {
         this.name = name;
-        this.number = phone;
+        this.number = number;
         this.password = password;
         this.image = image;
         this.address = address;
