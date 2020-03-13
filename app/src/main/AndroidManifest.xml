@@ -30,9 +30,7 @@
         <activity android:name=".Admin.AdminAddNewProductActivity" />
         <activity android:name=".RegisterUserActivity" />
         <activity android:name=".LoginActivity" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
