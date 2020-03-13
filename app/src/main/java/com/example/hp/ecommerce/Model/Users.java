@@ -4,9 +4,20 @@ public class Users {
 
     private String name, number, password, image, address;
 
-    public Users()
-    {
+    public Users(){
+        this.name=" ";
+        this.number=" ";
+        this.password=" ";
+        this.image=" ";
+        this.address=" ";
+    }
 
+    public Users(String name, String number, String password) {
+        this.name = name;
+        this.number = number;
+        this.password = password;
+        this.image="abc";
+        this.address="def";
     }
 
     public Users(String name, String phone, String password, String image, String address) {

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hp.ecommerce.Model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -91,12 +92,9 @@ public class RegisterUserActivity extends AppCompatActivity {
             {
                 if (!(dataSnapshot.child("Users").child(number).exists()))
                 {
-                    HashMap<String, Object> userdataMap = new HashMap<>();
-                    userdataMap.put("number", number);
-                    userdataMap.put("password", password);
-                    userdataMap.put("name", name);
+                    Users user = new Users(name,number,password);
 
-                    RootRef.child("Users").child(number).updateChildren(userdataMap)
+                    RootRef.child("Users").child(number).setValue(user)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task)

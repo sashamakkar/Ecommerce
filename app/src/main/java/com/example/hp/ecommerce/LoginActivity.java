@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
     private String parentDbName = "Users";
-    private CheckBox chkBoxRememberMe;
+//    private CheckBox chkBoxRememberMe;
 
 
     @Override
@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         ForgetPasswordLink = findViewById(R.id.forget_password_link);
         loadingBar = new ProgressDialog(this);
 
-        chkBoxRememberMe = findViewById(R.id.remember_me_chkb);
-        Paper.init(this);
+//        chkBoxRememberMe = findViewById(R.id.remember_me_chkb);
+//        Paper.init(this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,16 +81,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        NotAdminLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                LoginButton.setText("Login");
-                AdminLink.setVisibility(View.VISIBLE);
-                NotAdminLink.setVisibility(View.INVISIBLE);
-                parentDbName = "Users";
-            }
-        });
+//        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                LoginButton.setText("Login");
+//                AdminLink.setVisibility(View.VISIBLE);
+//                NotAdminLink.setVisibility(View.INVISIBLE);
+//                parentDbName = "Users";
+//            }
+//        });
     }
 
 
@@ -123,11 +123,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccount(final String number, final String password)
     {
-        if(chkBoxRememberMe.isChecked())
-        {
-            Paper.book().write(Prevalent.UserPhoneKey, number);
-            Paper.book().write(Prevalent.UserPasswordKey, password);
-        }
+//        if(chkBoxRememberMe.isChecked())
+//        {
+//            Paper.book().write(Prevalent.UserPhoneKey, number);
+//            Paper.book().write(Prevalent.UserPasswordKey, password);
+//        }
 
 
         final DatabaseReference RootRef;
