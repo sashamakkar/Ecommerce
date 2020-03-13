@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.ecommerce.Model.Users;
@@ -29,7 +30,8 @@ public class RegisterUserActivity extends AppCompatActivity {
     private Button CreateAccountButton;
     private EditText InputName, InputPhoneNumber, InputPassword;
     private ProgressDialog loadingBar;
-
+    private String parentDbName = "Users";
+    private TextView AdminLink , NotAdminLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         InputPassword=findViewById(R.id.register_password_input);
         CreateAccountButton=findViewById(R.id.register_btn);
         loadingBar = new ProgressDialog(this);
+        AdminLink = (TextView) findViewById(R.id.admin_panel_link_RegisterUser);
+        NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link_RegisterUser);
 
 
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +54,30 @@ public class RegisterUserActivity extends AppCompatActivity {
             }
         });
 
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                CreateAccountButton.setText("Create Account Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                NotAdminLink.setVisibility(View.VISIBLE);
+                parentDbName = "Admins";
+            }
+        });
+
+        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                CreateAccountButton.setText("Create Account");
+                AdminLink.setVisibility(View.VISIBLE);
+                NotAdminLink.setVisibility(View.INVISIBLE);
+                parentDbName = "Users";
+            }
+        });
     }
+
+
 
     private void CreateAccount() {
 
@@ -77,11 +104,11 @@ public class RegisterUserActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            ValidateUser(name, number, password);
+            ValidateUser(name, number, password,parentDbName);
         }
     }
 
-    private void ValidateUser(final String name, final String number, final String password)
+    private void ValidateUser(final String name, final String number, final String password,final String parentDbName)
     {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -90,11 +117,11 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                if (!(dataSnapshot.child("Users").child(number).exists()))
+                if (!(dataSnapshot.child(parentDbName).child(number).exists()))
                 {
                     Users user = new Users(name,number,password);
 
-                    RootRef.child("Users").child(number).setValue(user)
+                    RootRef.child(parentDbName).child(number).setValue(user)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task)
