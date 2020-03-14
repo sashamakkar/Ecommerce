@@ -50,6 +50,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_new_product);
 
         CategoryName = getIntent().getExtras().get("category").toString();
+
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Products Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
@@ -61,7 +62,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         InputProductPrice = (EditText) findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
-
         InputProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -69,7 +69,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                 OpenGallery();
             }
         });
-
 
         AddNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
