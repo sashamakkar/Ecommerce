@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.hp.ecommerce.Model.Products;
 import com.example.hp.ecommerce.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,8 +41,6 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         productID = getIntent().getStringExtra("pid");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products").child(productID);
 
-
-
         applyChangesBtn = findViewById(R.id.apply_changes_btn);
         name = findViewById(R.id.product_name_maintain);
         price = findViewById(R.id.product_price_maintain);
@@ -49,10 +48,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         imageView = findViewById(R.id.product_image_maintain);
         deleteBtn = findViewById(R.id.delete_product_btn);
 
-
         displaySpecificProductInfo();
-
-
 
         applyChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +57,6 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                 applyChanges();
             }
         });
-
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
