@@ -7,7 +7,10 @@
 
     tools:context=".MainActivity"
     >
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_full"/>
     <Button
         android:id="@+id/main_login_btn"
         android:layout_width="match_parent"
@@ -21,7 +24,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Already have an Account? Login"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimaryDark"
         />
 
     <Button
@@ -36,7 +39,7 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:text="Join Now"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimaryDark"
         />
 
 

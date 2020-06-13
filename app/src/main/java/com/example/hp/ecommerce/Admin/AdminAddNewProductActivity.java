@@ -32,10 +32,10 @@ import java.util.HashMap;
 
 public class AdminAddNewProductActivity extends AppCompatActivity {
 
-    private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
+    private String Category,Description, Price, Pname, saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
     private ImageView InputProductImage;
-    private EditText InputProductName, InputProductDescription, InputProductPrice;
+    private EditText InputProductName, InputProductDescription, InputProductPrice, CategoryName;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private String productRandomKey, downloadImageUrl;
@@ -49,8 +49,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_new_product);
 
-        CategoryName = getIntent().getExtras().get("category").toString();
-
+//        CategoryName = getIntent().getExtras().get("category").toString();
+        Intent intent=getIntent();
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Products Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
@@ -60,6 +60,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         InputProductName = (EditText) findViewById(R.id.product_name);
         InputProductDescription = (EditText) findViewById(R.id.product_description);
         InputProductPrice = (EditText) findViewById(R.id.product_price);
+        CategoryName= (EditText) findViewById(R.id.categoryname);
         loadingBar = new ProgressDialog(this);
 
         InputProductImage.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +107,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         Description = InputProductDescription.getText().toString();
         Price = InputProductPrice.getText().toString();
         Pname = InputProductName.getText().toString();
+        Category = CategoryName.getText().toString();
 
 
         if (ImageUri == null)
@@ -209,7 +211,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);
         productMap.put("image", downloadImageUrl);
-        productMap.put("category", CategoryName);
+        productMap.put("category", Category);
         productMap.put("price", Price);
         productMap.put("pname", Pname);
 

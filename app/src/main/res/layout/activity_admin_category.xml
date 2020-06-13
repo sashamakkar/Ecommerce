@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Add New Product"
+        android:text="Admin Page"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -21,135 +21,150 @@
 
 
 
-    <LinearLayout
-        android:id="@+id/linear1_category_layout"
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear1_category_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/slogan_category"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="10dp">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/t_shirts"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/images"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/sports_t_shirts"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/sports"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/female_dresses"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/images"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/sweathers"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/sports"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear2_category_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/linear1_category_layout"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        >-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/glasses"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/images"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/purses_bags_wallets"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/sports"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/hats_caps"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/images"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/shoes"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/sports"-->
+<!--            android:layout_marginStart="1dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linear3_category_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/linear2_category_layout"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="3dp"-->
+<!--        >-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/headphones_handfree"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/images"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/laptop_pc"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/sports"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/watches"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/images"-->
+<!--            />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/mobilephones"-->
+<!--            android:layout_width="75dp"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:src="@drawable/sports"-->
+<!--            android:layout_marginStart="1dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+    <Button
+        android:id="@+id/addproduct"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/slogan_category"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <ImageView
-            android:id="@+id/t_shirts"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/images"
-            />
-
-        <ImageView
-            android:id="@+id/sports_t_shirts"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/sports"
-            />
-
-        <ImageView
-            android:id="@+id/female_dresses"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/images"
-            />
-
-        <ImageView
-            android:id="@+id/sweathers"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/sports"
-            />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:id="@+id/linear2_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear1_category_layout"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="3dp"
-        >
-
-        <ImageView
-            android:id="@+id/glasses"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/images"
-            />
-
-        <ImageView
-            android:id="@+id/purses_bags_wallets"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/sports"
-            />
-
-        <ImageView
-            android:id="@+id/hats_caps"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/images"
-            />
-
-        <ImageView
-            android:id="@+id/shoes"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/sports"
-            android:layout_marginStart="1dp"
-            />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:id="@+id/linear3_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear2_category_layout"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="3dp"
-        >
-
-        <ImageView
-            android:id="@+id/headphones_handfree"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/images"
-            />
-
-        <ImageView
-            android:id="@+id/laptop_pc"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/sports"
-            />
-
-        <ImageView
-            android:id="@+id/watches"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/images"
-            />
-
-        <ImageView
-            android:id="@+id/mobilephones"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/sports"
-            android:layout_marginStart="1dp"
-            />
-
-    </LinearLayout>
+        android:layout_height="42dp"
+        android:layout_above="@+id/maintain_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Add new product"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        />
 
     <Button
         android:id="@+id/maintain_btn"

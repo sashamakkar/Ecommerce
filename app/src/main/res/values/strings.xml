@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ecommerce</string>
+    <string name="app_name">GreenBeq</string>
     <string name="title_activity_login">Log in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
